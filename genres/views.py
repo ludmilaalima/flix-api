@@ -50,3 +50,6 @@ def genre_delete_view(request, pk):
     
 
 
+    
+
+
