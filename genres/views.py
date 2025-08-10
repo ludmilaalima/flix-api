@@ -30,13 +30,31 @@ def genre_view(request):
 
 @csrf_exempt
 def genre_detail_view(request, pk):
+
+    genre = get_object_or_404(Genre, id=pk)
+
     if request.method == "GET":
-        data = get_object_or_404(Genre, id=pk)
         return JsonResponse(
                 {
-                    "id" :data.id, "name": data.name
+                    "id" :genre.id, "name": genre.name
                 }
             )
+    
+
+    elif request.method == "PUT":
+        payload = json.loads(request.body.decode('utf-8'))
+        new_name = payload.get('name')
+        if new_name:
+            genre.name = new_name
+            genre.save()
+            return JsonResponse(
+                
+                    {}, status=200
+                
+
+            )
+
+
 
 @csrf_exempt
 def genre_delete_view(request, pk):
@@ -45,7 +63,7 @@ def genre_delete_view(request, pk):
         data = get_object_or_404(Genre, id=pk)
         data.delete()
         return JsonResponse(
-            {'message': 'Deletado com sucesso'}
+            {'message': 'Deletado com sucesso'}, status=204
             )
     
 
