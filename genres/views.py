@@ -1,10 +1,12 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from genres.models import Genre
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 
 # sem rest - serializer "na mao"
+
+# mudar pra class-based view
 @csrf_exempt
 def genre_view(request):
     if request.method == "GET":
@@ -53,18 +55,15 @@ def genre_detail_view(request, pk):
                 
 
             )
-
-
-
-@csrf_exempt
-def genre_delete_view(request, pk):
-    if request.method == "DELETE":
-
-        data = get_object_or_404(Genre, id=pk)
-        data.delete()
-        return JsonResponse(
-            {'message': 'Deletado com sucesso'}, status=204
+        
+    elif request.method == "DELETE":
+        genre.delete()
+        return HttpResponse(
+            status=204
             )
+
+
+    
     
 
 
