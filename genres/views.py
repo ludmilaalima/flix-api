@@ -3,20 +3,21 @@ from genres.models import Genre
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
+from rest_framework import generics
 
 # sem rest - serializer "na mao"
 
 # mudar pra class-based view
-@csrf_exempt
-def genre_view(request):
+#@csrf_exempt
+'''def genre_view(request):
     if request.method == "GET":
         genres = Genre.objects.all()
         data = []
-        '''for genre in genres:
-            data.append(
-                {'id': genre.id, "name": genre.name}
-            )'''
-        print(request)
+        #for genre in genres:
+        #    data.append(
+        #        {'id': genre.id, "name": genre.name}
+        #    )
+        #print(request)
         data = [{'id': genre.id, 'name': genre.name} for genre in genres]
         return JsonResponse(data, safe=False)
 
@@ -60,7 +61,7 @@ def genre_detail_view(request, pk):
         genre.delete()
         return HttpResponse(
             status=204
-            )
+            )'''
 
 
     
