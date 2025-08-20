@@ -66,7 +66,7 @@ def genre_detail_view(request, pk):
 
 
 
-class GenreView(generics.ListCreateAPIView):
+class GenreCreateListView(generics.ListCreateAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
     
