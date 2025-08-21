@@ -9,8 +9,8 @@ from genres.serializers import GenreSerializer
 # sem rest - serializer "na mao"
 
 # mudar pra class-based view
-#@csrf_exempt
-'''def genre_view(request):
+'''@csrf_exempt
+def genre_view(request):
     if request.method == "GET":
         genres = Genre.objects.all()
         data = []
