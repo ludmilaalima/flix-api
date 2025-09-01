@@ -19,12 +19,16 @@ from django.urls import path
 from app.views import hello_world
 #from genres.views import genre_view, genre_detail_view
 from genres.views import GenreCreateListView, GenreRetrieveUpdateDestroyAPIView
+from actors.views import ActorCreateListView, ActorRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('teste', hello_world),
     path('genres/', GenreCreateListView.as_view()),
-    path('genres/<int:pk>/', GenreRetrieveUpdateDestroyAPIView.as_view())
+    path('genres/<int:pk>/', GenreRetrieveUpdateDestroyAPIView.as_view()),
+    path('actors/', ActorCreateListView.as_view()),
+    path('actors/<int:pk>/', ActorRetrieveUpdateDestroyAPIView.as_view())
+    
    
     #path('genres/', genre_view),
     #path('genres/<int:pk>/', genre_detail_view)
